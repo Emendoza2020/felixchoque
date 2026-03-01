@@ -1,0 +1,1112 @@
+/* ====== General ====== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #fff;
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+section {
+    padding: 5rem 2rem;
+    position: relative;
+}
+
+
+/* ====== Colores ====== */
+
+ :root {
+    --primary-color: #ff0000;
+    /* Rojo */
+    --secondary-color: #000000;
+    /* Negro */
+    --text-color: #fff;
+}
+
+body {
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+
+/* ====== Menu fijo ====== */
+
+
+/* ===== HEADER BASE ===== */
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    padding: 18px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: 0.4s ease;
+    background: transparent;
+}
+
+
+/* Fondo al hacer scroll */
+
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.95);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+/* Línea roja inferior */
+
+.header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    background: #ff0000;
+    transition: 0.4s ease;
+}
+
+.header.scrolled::after {
+    width: 100%;
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    /* Negro sólido */
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+}
+
+
+/* NAV DESKTOP */
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+
+/* Hover elegante */
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ff0000;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+
+/* BOTÓN VOTA */
+
+.btn-main {
+    background: #ff0000;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: bold;
+    color: #fff !important;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background: #c40000;
+    transform: scale(1.05);
+}
+
+
+/* ===== HAMBURGUESA ANIMADA ===== */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.menu-toggle span {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    transition: 0.4s;
+}
+
+
+/* Animación a X */
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+    nav {
+        position: absolute;
+        top: 75px;
+        right: 0;
+        width: 280px;
+        background: #111;
+        transform: translateX(100%);
+        transition: 0.4s ease;
+        box-shadow: -5px 15px 30px rgba(0, 0, 0, 0.6);
+    }
+    nav.active {
+        transform: translateX(0);
+    }
+    nav ul {
+        flex-direction: column;
+        padding: 30px;
+        gap: 20px;
+    }
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+
+/* ====== Hero ====== */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+    overflow: hidden;
+}
+
+.hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.4);
+    z-index: 1;
+    transform: scale(1);
+    transition: transform 1s ease-out;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero-content .badge {
+    background: var(--primary-color);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: normal;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-buttons a {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-right: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-main {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.btn-main:hover {
+    background: #b30000;
+}
+
+.btn-outline {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-outline:hover {
+    background: #fff;
+    color: #000;
+}
+
+.social-hero a {
+    color: #fff;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+    transition: 0.3s;
+}
+
+.social-hero a:hover {
+    color: var(--primary-color);
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+    /* sombra para resaltar sobre la imagen */
+}
+
+.title-red {
+    color: #ff0000;
+    /* Rojo intenso */
+    background: linear-gradient(45deg, #ff0000, #ff5555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.title-black {
+    color: #000;
+    /* Negro sólido */
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.7);
+    /* sombra roja para destacar */
+}
+
+.subtitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff0000;
+    /* Rojo para el nombre del candidato */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #fff;
+    /* blanco sobre fondo oscuro */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+
+/* Animación de entrada */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ====== Secciones con parallax ====== */
+
+.parallax {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh;
+}
+
+
+/* ====== Animaciones fade-in ====== */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ====== Campañas ====== */
+
+.campaigns {
+    background: #111;
+    /* fondo oscuro */
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.campaigns h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #ff0000;
+    /* rojo llamativo */
+}
+
+
+/* Contenedor de videos flexibles */
+
+.campaign-videos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+
+/* Cada video con título y descripción */
+
+.campaign-video {
+    background: #222;
+    padding: 1rem;
+    border-radius: 10px;
+    max-width: 400px;
+    flex: 1 1 300px;
+    /* flexible pero uniforme */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.campaign-video video {
+    width: 100%;
+    height: 225px;
+    /* altura uniforme */
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.campaign-video h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #ff0000;
+    /* título en rojo */
+}
+
+.campaign-video p {
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.4;
+}
+
+
+/* Responsivo */
+
+@media (max-width:768px) {
+    .campaign-video {
+        max-width: 90%;
+    }
+    .campaign-video video {
+        height: 200px;
+    }
+}
+
+
+/* ====== Plan 2026-2031 ====== */
+
+
+/* Contenedor de tarjetas */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.plan-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+
+/* Tarjetas con parallax y sombra */
+
+.plan-card {
+    background: #222;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    max-width: 300px;
+    flex: 1 1 250px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s, background 0.3s;
+    position: relative;
+}
+
+
+/* Iconos */
+
+.plan-icon {
+    color: #ff0000;
+    /* rojo */
+    margin-bottom: 1rem;
+}
+
+
+/* Títulos */
+
+.plan-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #ff0000;
+}
+
+
+/* Descripción */
+
+.plan-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+}
+
+
+/* Hover de tarjeta */
+
+.plan-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: #2a2a2a;
+}
+
+
+/* Efecto parallax sutil al hacer scroll */
+
+.plan-card {
+    will-change: transform;
+}
+
+
+/* Animación fade-in al cargar */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsivo */
+
+@media (max-width:768px) {
+    .plan-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .plan-card {
+        max-width: 90%;
+    }
+}
+
+
+/* ====== Alcalde ====== */
+
+
+/* Sección principal */
+
+
+/* Contenedor principal */
+
+.mayor {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 60%, #ff0000 100%);
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Contenedor flex horizontal */
+
+.mayor-container {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    gap: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 20px;
+    /* Se elimina fondo */
+    background: transparent;
+    box-shadow: none;
+    /* opcional: quitar sombra si quieres total transparencia */
+}
+
+
+/* Imagen circular */
+
+.mayor-image img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.mayor-image img:hover {
+    transform: scale(1.05);
+}
+
+
+/* Bio al lado de la imagen */
+
+.bio {
+    color: #fff;
+    flex: 1;
+}
+
+.bio h2 {
+    font-size: 1.8rem;
+    color: #ff0000;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.bio p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+/* Responsivo: en móviles la imagen arriba y bio debajo */
+
+@media (max-width:768px) {
+    .mayor-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .mayor-image img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+
+/* ====== Concejales ====== */
+
+
+/* Sección */
+
+.council {
+    padding: 5rem 2rem;
+    background: #111;
+    text-align: center;
+}
+
+.council h2 {
+    font-size: 2.5rem;
+    color: #ff0000;
+    margin-bottom: 3rem;
+}
+
+
+/* Contenedor de tarjetas */
+
+.council-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+
+/* Tarjetas de concejales */
+
+.council-card {
+    background: #222;
+    padding: 1.5rem;
+    border-radius: 15px;
+    max-width: 220px;
+    flex: 1 1 200px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, background 0.3s;
+}
+
+
+/* Imagen circular */
+
+.council-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.6);
+}
+
+
+/* Nombre y descripción */
+
+.council-card h3 {
+    font-size: 1.2rem;
+    color: #ff0000;
+    margin-bottom: 0.5rem;
+}
+
+.council-card p {
+    font-size: 0.95rem;
+    color: #fff;
+    line-height: 1.4;
+}
+
+
+/* Hover */
+
+.council-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    background: #2a2a2a;
+}
+
+
+/* Responsivo */
+
+@media (max-width:768px) {
+    .council-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .council-card {
+        max-width: 90%;
+    }
+}
+
+
+/* ====== Papeleta ====== */
+
+
+/* Sección general */
+
+.ballot {
+    padding: 80px 20px;
+    background: #111;
+    text-align: center;
+}
+
+
+/* Título */
+
+.titulo-seccion {
+    color: #ff0000;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+
+/* Tarjeta papeleta */
+
+.ballot-card {
+    width: 340px;
+    margin: auto;
+    padding: 25px;
+    background: repeating-linear-gradient( 90deg, #c40000 0px, #c40000 40px, #000 40px, #000 80px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    color: white;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    transition: 0.3s;
+}
+
+
+/* Hover efecto */
+
+.ballot-card:hover {
+    transform: scale(1.05);
+}
+
+
+/* Encabezado */
+
+.ballot-header h3 {
+    font-size: 13px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+
+/* ML grande */
+
+.logo-ml {
+    font-size: 65px;
+    font-weight: bold;
+    color: orange;
+    text-shadow: 3px 3px 0 #fff;
+    margin-bottom: 20px;
+}
+
+
+/* Imagen circular */
+
+.ballot-image img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    object-fit: cover;
+    margin-bottom: 25px;
+}
+
+
+/* Parte inferior */
+
+.ballot-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+
+/* Foto candidato */
+
+.candidate-photo img {
+    width: 100px;
+    height: 120px;
+    border: 4px solid #fff;
+    object-fit: cover;
+}
+
+
+/* Cuadro voto */
+
+.vote-box {
+    width: 110px;
+    height: 110px;
+    background: #fff;
+    border: 4px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Check rojo */
+
+.check {
+    width: 60px;
+    height: 30px;
+    border-left: 12px solid red;
+    border-bottom: 12px solid red;
+    transform: rotate(-45deg);
+}
+
+
+/* Botón votar */
+
+.vote-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.vote-button:hover {
+    background: #ff0000;
+    transform: scale(1.05);
+}
+
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .ballot-card {
+        width: 95%;
+    }
+    .ballot-image img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+
+/* ====== Internet Gratuito ====== */
+
+
+/* Sección */
+
+.wifi {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #ff0000 100%);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Contenedor central */
+
+.wifi-container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    width: 100%;
+}
+
+
+/* Título */
+
+.wifi h2 {
+    color: #ff0000;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+
+/* Texto */
+
+.wifi p {
+    color: #fff;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+
+/* Tarjeta QR */
+
+.qr-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    display: inline-block;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+/* Imagen QR */
+
+.qr-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+
+/* Hover efecto */
+
+.qr-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 0, 0, 0.7);
+}
+
+
+/* Info red */
+
+.wifi-info {
+    margin-top: 20px;
+    color: #fff;
+    font-weight: bold;
+    background: #000;
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+
+/* Responsive */
+
+@media (max-width: 480px) {
+    .qr-card img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+
+/* ====== Responsivo ====== */
+
+@media (max-width:768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    .mayor,
+    .mayor img {
+        flex-direction: column;
+    }
+    .mayor .bio {
+        max-width: 100%;
+    }
+    .council-cards {
+        flex-direction: column;
+    }
+}
+
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 60px 20px 20px 20px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer h3 {
+    color: #ff0000;
+    margin-bottom: 10px;
+}
+
+.footer h4 {
+    color: #ff0000;
+    margin-bottom: 15px;
+}
+
+
+/* Enlaces */
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff0000;
+}
+
+
+/* Redes sociales */
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    background: #ff0000;
+    transform: translateY(-5px);
+}
+
+
+/* Parte inferior */
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #222;
+    font-size: 14px;
+    color: #888;
+}
+
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
